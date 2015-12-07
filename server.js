@@ -34,10 +34,10 @@ app.get('/getS3Options', function (req, res) {
 		});
 });
 
-var server = app.listen(80, function () {
+var server = app.listen(8000, function () {
 
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = Number(process.env.PORT || 8000);
 
   console.log('Example app listening at http://%s:%s', host, port)
 
