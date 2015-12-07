@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="/angular.min.js"></script>
+	<script src="/angular-sanitize.min.js"></script>
+	<script src="/ng-s3upload.js"></script>
+	<link rel="stylesheet" type="text/css" href="/bootstrap-combined.min.css" />
+	<title>jQuery File Upload Example</title>
+</head>
+<body>
+
+	<div ng-app="myapp">
+		<div class="container" ng-controller="myctrl">
+
+			<div class="page-header">
+				<h1>s3Upload <small>example</small></h1>
+			</div>
+
+			<div class="form-group">
+				<label>Upload on demand</label>
+				<div s3-upload bucket="lezyeoh" ng-model="files.first" s3-upload-options="{submitOnChange: false}" do-upload="performUpload"></div>
+
+				<br/>
+				<button class="btn btn-default" ng-click="performUpload = true">Upload now</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	var myapp = angular.module('myapp', ["ngSanitize", "ngS3upload"]);
+
+	myapp.controller('myctrl', function ($scope) {
+		$scope.files = {
+		};
+
+		$scope.performUpload = false;
+	});
+</script>
+</html>
